@@ -42,7 +42,7 @@ def get_constant_deflators(
 ) -> pd.DataFrame:
     if eu_list is None:
         eu_list = eu27
-    weo = WorldEconomicOutlook(year=2024, release=1)
+    weo = WorldEconomicOutlook(year=2024, release=2)
 
     weo.load_data(["NGDP_D", "NGDPD"])
 
