@@ -23,4 +23,3 @@ Our analysis estimates how much EU countries and institutions need to spend to a
 - **Scripts**: Python scripts for loading, processing, and analyzing the data.
     - `ms_analysis.py` and `eu_institutions.py` contain the core analysis for Member States and EU Institutions respectively.
     - `tools.py` and `common.py` provide utility functions and constants used throughout the analysis.
-- **Data**: Folder paths and handling defined in `config.py` to ensure consistent reference to data and output locations.
