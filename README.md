@@ -1,6 +1,6 @@
 # EU ODA Targets Analysis Repository
 
-This repository provides the data and code used for the analysis of EU Official Development Assistance (ODA) targets, focusing on the required spending by EU countries and institutions to meet their ODA commitments by 2030. The analysis also includes projections for EU Institutions' spending during the 2027-2034 period.
+This repository provides the data and code used for the analysis of EU Official Development Assistance (ODA) targets, focusing on the required spending by EU countries and institutions to meet their ODA commitments by 2030. The analysis also includes projections for EU Member States and EU Institutions' spending during the 2028-2034 period.
 
 ### Methodology Overview
 
