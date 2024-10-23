@@ -173,7 +173,13 @@ def eui_mff_period(
 
 
 if __name__ == "__main__":
+    # Read MS chart data
     ms = pd.read_parquet(config.Paths.app_data / "eu27_chart.parquet")
+    # Calculate EUI spending chart
     eui = eui_spending_chart(ms)
+    # Save for Flourish
+    eui.to_csv(config.Paths.app_data / "eui_spending_chart.csv", index=False)
+
+    # Calculate key numbers.
     imputable, non_imputable = eui_mff_period(ms, eui)
     total_eui = imputable + non_imputable
