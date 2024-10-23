@@ -131,3 +131,9 @@ dmypy.json
 
 # Ignore DataSpell
 .idea/
+
+.DS_Store
+dist/
+src/.observablehq/cache/
+node_modules/
+yarn-error.log
