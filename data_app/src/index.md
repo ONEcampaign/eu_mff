@@ -66,41 +66,38 @@ The WEO projections are available up to 2028. For years beyond 2028, we use the 
 #### Projecting the required spending
 We assume that countries will meet their ODA targets by 2030, and that they will get to their targets with linear yearly increases. For countries who are already spending above their target, we assume that they will sustain their current level of ODA spending as a percentage of GNI.
 
-The following table shows how much EU 27 countries would have to spend per year to meet their **individual** targets by 2030, and sustain that spending (as a share of GNI) until 2034. 
+The following table shows how much EU 27 countries would have to spend per year to meet their **individual** targets by 2030, and sustain that spending (as a share of GNI) until 2034. All numbers are shown in 2025 prices.
 
 
 ```js
-const additionalSpendingData = FileAttachment("./data/additional_spending_yearly.csv").csv({typed:true})
+const additionalSpendingData = FileAttachment("./data/eu27_chart.csv").csv({typed:true}).then(d=>d.filter(D=>D["Member State"] != "EU27 Countries"))
 ```
 
 ```js
-const country = view(Inputs.select(["All"].concat(additionalSpendingData.map(d=>d.name_short)), {value: "All", label: "Select a country", unique: true, sort:true}));
+const country = view(Inputs.select(["All"].concat(additionalSpendingData.map(d=>d["Member State"])), {value: "All", label: "Select a country", unique: true, sort:true}));
 ```
 
 
 <div class="card" style="max-width: 720px; padding: 0;">
 
 ```js
-const additionalSpendingTable = view(Inputs.table(additionalSpendingData.filter(d => d.indicator == "Full" && d.name_short == country || country=="All"),{
+const additionalSpendingTable = view(Inputs.table(additionalSpendingData.filter( d=>d["Year"]>2022 && (d["Member State"] == country || country=="All")),{
     rows: 13.2,
-    columns: ["year","name_short", "oda_gni_ratio", "oda", "additional_oda"],
-    header: {"year": "Year", "oda_gni_ratio": "ODA/GNI (%)", "oda": "Projected ODA", "additional_oda": "Additional ODA",
-        "name_short": "Country",
-    },
+    columns: ["Year","Member State", "ODA/GNI ratio", "ODA", "Missing to target"],
     width: {
-        "year": 100,
-        "name_short": 130
+        "Year": 100,
+        "Member State": 130
      },
      layout: "auto",
 
      format:{
-        year: d=>d.toFixed(0),
-        oda_gni_ratio: d => (100*d).toFixed(2),
-        oda: d=> d.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 1})+"m",
-        additional_oda: d=> d.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 1})+"m",
+        Year: d=>d.toFixed(0),
+        "ODA/GNI ratio": d => (d).toFixed(2),
+        ODA: d=> d.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 1})+"m",
+        "Missing to target": d=> d.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 1})+"m",
      },
      align:{
-        year: "left"
+        Year: "left"
      }
 
 }))
