@@ -6,5 +6,6 @@ class Paths:
 
     project = Path(__file__).resolve().parent.parent.parent.parent.parent
     raw_data = project / "raw_data"
-    output = project / "output"
-    scripts = project / "scripts"
+    app = project / "data_app"
+    app_data = app / "src" / "data"
+    scripts = app_data / "scripts"

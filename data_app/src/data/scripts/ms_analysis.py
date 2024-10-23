@@ -340,6 +340,9 @@ def calculate_mff_total_ms(df: pd.DataFrame) -> pd.DataFrame:
 
 if __name__ == "__main__":
     df = main_column_chart_with_projections()
-    df.to_parquet(Paths.output / "eu27_chart.parquet")
+    # Save to parquet for later use
+    df.to_parquet(Paths.app_data / "eu27_chart.parquet")
+    # Save to csv for Flourish
+    df.to_csv(Paths.app_data / "eu27_chart.csv", index=False)
 
     mff = calculate_mff_total_ms(df)

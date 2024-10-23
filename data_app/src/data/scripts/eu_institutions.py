@@ -173,7 +173,7 @@ def eui_mff_period(
 
 
 if __name__ == "__main__":
-    ms = pd.read_parquet(config.Paths.output / "eu27_chart.parquet")
+    ms = pd.read_parquet(config.Paths.app_data / "eu27_chart.parquet")
     eui = eui_spending_chart(ms)
     imputable, non_imputable = eui_mff_period(ms, eui)
     total_eui = imputable + non_imputable
